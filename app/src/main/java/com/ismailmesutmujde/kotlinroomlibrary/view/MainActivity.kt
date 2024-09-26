@@ -1,7 +1,8 @@
-package com.ismailmesutmujde.kotlinroomlibrary
+package com.ismailmesutmujde.kotlinroomlibrary.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.ismailmesutmujde.kotlinroomlibrary.R
 
 
 class MainActivity : AppCompatActivity() {
