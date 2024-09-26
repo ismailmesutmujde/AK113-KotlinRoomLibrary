@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         //insertPerson()
         //updatePerson()
-        deletePerson()
-        loadingPersons()
-
+        //deletePerson()
+        //loadingPersons()
+        bringRandom1Person()
     }
 
     fun loadingPersons() {
@@ -61,6 +61,17 @@ class MainActivity : AppCompatActivity() {
         val job = CoroutineScope(Dispatchers.Main).launch {
             val deletedPerson = Persons(3,"New Ahmet",50)
             pdao.deletePerson(deletedPerson)
+        }
+    }
+
+    fun bringRandom1Person() {
+        val job = CoroutineScope(Dispatchers.Main).launch {
+            val incomingList = pdao.bringRandom1Person()
+            for(p in incomingList) {
+                Log.e("Person id", p.person_id.toString())
+                Log.e("Person name", p.person_name)
+                Log.e("Person age", p.person_age.toString())
+            }
         }
     }
 }
