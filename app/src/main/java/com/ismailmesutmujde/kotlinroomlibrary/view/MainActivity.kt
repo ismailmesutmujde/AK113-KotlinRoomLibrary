@@ -28,7 +28,8 @@ class MainActivity : AppCompatActivity() {
         //updatePerson()
         //deletePerson()
         //loadingPersons()
-        bringRandom1Person()
+        //bringRandom1Person()
+        searchPerson()
     }
 
     fun loadingPersons() {
@@ -45,14 +46,14 @@ class MainActivity : AppCompatActivity() {
 
     fun insertPerson() {
         val job = CoroutineScope(Dispatchers.Main).launch {
-            val newPerson = Persons(0,"Ahmet",40)
+            val newPerson = Persons(0,"Mehmet",75)
             pdao.insertPerson(newPerson)
         }
     }
 
     fun updatePerson() {
         val job = CoroutineScope(Dispatchers.Main).launch {
-            val updatedPerson = Persons(3,"New Ahmet",50)
+            val updatedPerson = Persons(6,"Mehmet",75)
             pdao.updatePerson(updatedPerson)
         }
     }
@@ -68,6 +69,17 @@ class MainActivity : AppCompatActivity() {
         val job = CoroutineScope(Dispatchers.Main).launch {
             val incomingList = pdao.bringRandom1Person()
             for(p in incomingList) {
+                Log.e("Person id", p.person_id.toString())
+                Log.e("Person name", p.person_name)
+                Log.e("Person age", p.person_age.toString())
+            }
+        }
+    }
+
+    fun searchPerson() {
+        val job = CoroutineScope(Dispatchers.Main).launch {
+            val personList = pdao.searchPerson("e")
+            for(p in personList) {
                 Log.e("Person id", p.person_id.toString())
                 Log.e("Person name", p.person_name)
                 Log.e("Person age", p.person_age.toString())
