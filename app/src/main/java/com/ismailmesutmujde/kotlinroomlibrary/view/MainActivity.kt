@@ -25,7 +25,8 @@ class MainActivity : AppCompatActivity() {
         pdao = db.getPersonsDao()
 
         //insertPerson()
-        updatePerson()
+        //updatePerson()
+        deletePerson()
         loadingPersons()
 
     }
@@ -53,6 +54,13 @@ class MainActivity : AppCompatActivity() {
         val job = CoroutineScope(Dispatchers.Main).launch {
             val updatedPerson = Persons(3,"New Ahmet",50)
             pdao.updatePerson(updatedPerson)
+        }
+    }
+
+    fun deletePerson() {
+        val job = CoroutineScope(Dispatchers.Main).launch {
+            val deletedPerson = Persons(3,"New Ahmet",50)
+            pdao.deletePerson(deletedPerson)
         }
     }
 }
