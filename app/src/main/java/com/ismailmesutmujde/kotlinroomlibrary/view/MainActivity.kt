@@ -24,7 +24,8 @@ class MainActivity : AppCompatActivity() {
         db = DatabaseAccess.databaseAccess(this)!!
         pdao = db.getPersonsDao()
 
-        insertPerson()
+        //insertPerson()
+        updatePerson()
         loadingPersons()
 
     }
@@ -45,6 +46,13 @@ class MainActivity : AppCompatActivity() {
         val job = CoroutineScope(Dispatchers.Main).launch {
             val newPerson = Persons(0,"Ahmet",40)
             pdao.insertPerson(newPerson)
+        }
+    }
+
+    fun updatePerson() {
+        val job = CoroutineScope(Dispatchers.Main).launch {
+            val updatedPerson = Persons(3,"New Ahmet",50)
+            pdao.updatePerson(updatedPerson)
         }
     }
 }
