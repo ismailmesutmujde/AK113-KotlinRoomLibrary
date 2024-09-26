@@ -30,4 +30,7 @@ interface PersonsDao {
 
     @Query("SELECT * FROM persons WHERE person_id=:person_id")
     suspend fun bringPerson(person_id:Int) : Persons
+
+    @Query("SELECT count(*) FROM persons WHERE person_name=:person_name")
+    suspend fun recordControl(person_name:String) : Int
 }
