@@ -29,7 +29,8 @@ class MainActivity : AppCompatActivity() {
         //deletePerson()
         //loadingPersons()
         //bringRandom1Person()
-        searchPerson()
+        //searchPerson()
+        bringPerson()
     }
 
     fun loadingPersons() {
@@ -84,6 +85,15 @@ class MainActivity : AppCompatActivity() {
                 Log.e("Person name", p.person_name)
                 Log.e("Person age", p.person_age.toString())
             }
+        }
+    }
+
+    fun bringPerson() {
+        val job = CoroutineScope(Dispatchers.Main).launch {
+            val incomingPerson = pdao.bringPerson(4)
+            Log.e("Person id", incomingPerson.person_id.toString())
+            Log.e("Person name", incomingPerson.person_name)
+            Log.e("Person age", incomingPerson.person_age.toString())
         }
     }
 }

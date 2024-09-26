@@ -27,4 +27,7 @@ interface PersonsDao {
 
     @Query("SELECT * FROM persons WHERE person_name like '%' || :searchingWord || '%'")
     suspend fun searchPerson(searchingWord:String) : List<Persons>
+
+    @Query("SELECT * FROM persons WHERE person_id=:person_id")
+    suspend fun bringPerson(person_id:Int) : Persons
 }
